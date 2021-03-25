@@ -283,7 +283,7 @@ module.exports.load = async function(app, db) {
         let theme = indexjs.get(req);
 
         if (!req.session.pterodactyl) return four0four(req, res, theme);
-        
+
         let cacheaccount = await fetch(
             settings.pterodactyl.domain + "/api/application/users/" + (await db.get("users-" + req.session.userinfo.id)) + "?include=servers",
             {
@@ -300,9 +300,9 @@ module.exports.load = async function(app, db) {
         let failredirect = theme.settings.redirect.failedgetip ? theme.settings.redirect.failedgetip : "/";
         let successredirect = theme.settings.redirect.getip ? theme.settings.redirect.getip : "/";
         if (!req.query.id) return res.redirect(`${failredirect}?err=MISSINGID`);
-        
+
         if (!(await db.get("users-" + req.query.id))) return res.redirect(`${failredirect}?err=INVALIDID`);
-        
+
         if (!(await db.get("ip-" + req.query.id))) return res.redirect(`${failredirect}?err=NOIP`);
         let ip = await db.get("ip-" + req.query.id);
         return res.redirect(successredirect + "?err=NONE&ip=" + ip)
