@@ -35,13 +35,14 @@
           "disabled": []
         }
       },
-      "paypal":
+      "paypal": {
         "enabled": false,
         "info": {
           "_comment": "Get this information by signing up for a developer account on PayPal.
           "client_id": "",
           "client_secret": ""
         }
+      },
       "passwordgenerator": {
         "signup": false,
         "length": 8
